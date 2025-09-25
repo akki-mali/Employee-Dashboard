@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+/* Responsive for AG Grid pagination panel */
+@media (max-width: 640px) {
+  .ag-theme-alpine .ag-paging-panel {
+    flex-wrap: wrap;
+  }
+  .ag-theme-alpine .ag-paging-page-size {
+    order: 1;
+    margin: 0 auto;
+  }
+  .ag-theme-alpine .ag-paging-description {
+    order: 2;
+  }
+  .ag-theme-alpine .ag-paging-controls {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .ag-theme-alpine .ag-paging-row-summary-panel {
+    margin: 0 auto;
+  }
+}
