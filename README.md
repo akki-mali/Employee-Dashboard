@@ -34,8 +34,7 @@ npm run dev
 │  │  └─ Dashboard.jsx
 │  ├─ data/
 │  │  └─ employeeData.js
-│  ├─ assets/
-│  ├─ main.jsx
+│  ├─ App.jsx
 │  └─ index.css
 ├─ index.html
 ├─ package.json
@@ -45,28 +44,12 @@ npm run dev
 ### AG Grid Configuration Notes
 This project uses AG Grid's ModuleRegistry. Registered modules are declared at the top of `src/components/Dashboard.jsx`.
 
-Currently registered (as used in the UI):
-- Community: `ClientSideRowModelModule`, `PaginationModule`, `CellStyleModule`, `NumberFilterModule`, `DateFilterModule`, `ValidationModule` (for clearer console messages)
-- Enterprise: `RowGroupingModule`, `SetFilterModule`, `ColumnsToolPanelModule`, `FiltersToolPanelModule`, `SideBarModule`, `IntegratedChartsModule.with(AgChartsEnterpriseModule)`
-
 If you enable a new AG Grid feature and see error #200, import and register the corresponding module. Example:
 ```
 import { SomeFeatureModule } from 'ag-grid-community';
 ModuleRegistry.registerModules([ SomeFeatureModule ]);
-```
 
-### Common Troubleshooting
-- Error #200 (Missing Module):
-  - The console message will include the module name (e.g., `Pagination`, `SharedRowSelection`). Import it from `ag-grid-community` or `ag-grid-enterprise` as appropriate and register it with `ModuleRegistry`.
-  - Tip: keep `ValidationModule` registered to get descriptive messages.
-
-- Warning #48 (Formatter):
-  - Means a column has object/array data without a `valueFormatter`. Add `colDef.valueFormatter` to convert values to strings. Example for arrays:
-```
-valueFormatter: (p) => Array.isArray(p.value) ? p.value.join(', ') : (p.value ?? '')
-```
-
-- Styles/Themes:
+### Styles/Themes:
   - This project uses the legacy theme via `provideGlobalGridOptions({ theme: 'legacy' })` and `ag-theme-alpine` CSS classes.
 
 ### Customization Pointers
@@ -75,7 +58,5 @@ valueFormatter: (p) => Array.isArray(p.value) ? p.value.join(', ') : (p.value ??
 - Data source: `src/data/employeeData.js`
 - Pagination: Toggle via `pagination` and `paginationPageSize` on `<AgGridReact />`
 
-### License
-This repository is for demonstration/learning purposes. AG Grid Enterprise and AG Charts Enterprise features may require a license in production. Refer to AG Grid licensing terms.
 
 
