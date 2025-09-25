@@ -48,7 +48,7 @@ If you enable a new AG Grid feature and see error #200, import and register the 
 ```
 import { SomeFeatureModule } from 'ag-grid-community';
 ModuleRegistry.registerModules([ SomeFeatureModule ]);
-
+```
 ### Styles/Themes:
   - This project uses the legacy theme via `provideGlobalGridOptions({ theme: 'legacy' })` and `ag-theme-alpine` CSS classes.
 
